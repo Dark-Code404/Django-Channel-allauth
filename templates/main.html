@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="index-container">
+    <h2>Available Chat Rooms</h2>
+    <ul class="room-list">
+        {% for room in rooms %}
+        <li class="room-item">
+            <strong>{{ room.name }}</strong> - {{ room.description }}
+            <br><a href="{% url 'room' room.name %}" class="join-button">Join</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h2>Create a New Chat Room</h2>
+    <a href="{% url 'create_rooms' %}" class="create-button">Create Room</a>
+</div>
+
+<script>
+    document.querySelector('#room-name-input').focus();
+    document.querySelector('#room-name-input').onkeyup = function(e) {
+        if (e.key === 'Enter') {  // enter, return
+            document.querySelector('#room-name-submit').click();
+        }
+    };
+
+    document.querySelector('#room-name-submit').onclick = function(e) {
+        var roomName = document.querySelector('#room-name-input').value;
+        window.location.pathname = 'room/'+roomName + '/';
+    };
+</script>
+{% endblock content %}
