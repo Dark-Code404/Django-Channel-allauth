@@ -15,9 +15,7 @@ docker-compose.yml
 # Static files
 static/
 
-# Requirements files
-requirements.in
-requirements.txt
+
 
 # Logs
 *.log

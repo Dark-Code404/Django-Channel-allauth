@@ -3,7 +3,7 @@
 {% block content %}
 <div class="chat-container">
     <h2>Room: {{ room.name }}</h2>
-    <textarea id="chat-log" cols="100" rows="20">
+    <textarea readonly id="chat-log" cols="100" rows="20">
         {% for message in messages %}
         {{ message.user.username }}: {{ message.content }}
         {% endfor %}
@@ -13,7 +13,7 @@
     {{ room.name|json_script:"room-name" }}
 </div>
     <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent).replace(" ","_");
+        const roomName = JSON.parse(document.getElementById('room-name').textContent).replace(/ /g, "_");
         console.log('Room Name:', roomName);
 
         const chatSocket = new WebSocket(
@@ -51,6 +51,8 @@
             }));
             messageInputDom.value = '';
         };
+
+        document.querySelector('#chat-log').setAttribute('readonly', 'readonly');
     
     </script>
 {% endblock content %}
