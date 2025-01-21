@@ -23,7 +23,7 @@ This project demonstrates the implementation of a simple chat application using 
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/simple-chat-app.git
+   git clone https://github.com/Dark-Code404/Django-Channel-allauth.git
    cd simple-chat-app`
    ```
 2. **Install Dependencies:**:
